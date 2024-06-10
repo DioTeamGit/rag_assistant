@@ -100,7 +100,7 @@ if st.session_state.start_chat:
             st.markdown(message["content"])
 
     # Chat input for the user
-    if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("Fai una domanda"):
         # Add user message to the state and display it
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
