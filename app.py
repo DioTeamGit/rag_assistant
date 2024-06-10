@@ -27,13 +27,6 @@ st.set_page_config(page_title="ChatGPT-like Chat App", page_icon=":speech_balloo
 
 # Define functions for scraping, converting text to PDF, and uploading to OpenAI
 
-def text_to_pdf(text, filename):
-    """Convert text content to a PDF file."""
-    path_wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'
-    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pdfkit.from_string(text, filename, configuration=config)
-    return filename
-
 def upload_to_openai(filepath):
     """Upload a file to OpenAI and return its file ID."""
     with open(filepath, "rb") as file:
@@ -56,7 +49,7 @@ if st.sidebar.button("Start Chat"):
     if st.session_state.file_id_list:
         st.session_state.start_chat = True
         # Create a thread once and store its ID in session state
-        thread = client.threads.create()
+        thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id
         st.write("thread id: ", thread.id)
     else:
