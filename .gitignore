@@ -1,0 +1,8 @@
+# pyenv garbage
+.venv
+
+# environment variables
+.env
+
+# python stuff
+__pycache__/
